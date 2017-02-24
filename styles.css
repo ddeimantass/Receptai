@@ -1,0 +1,238 @@
+body{
+	margin-bottom: 50px
+}
+
+.search{
+	margin-top: 25px;
+	
+}
+.imgframe{
+	max-width: 50%;
+	margin-left: 25%;
+}
+
+.page-top{
+    margin: 0;
+	background: #000;
+	color: #fff;
+}
+
+.image{
+	max-width: 100%;
+}
+.mailTop{
+	margin-left: 10px;
+}
+
+.btn .btn-danger{
+	padding-bottom: 15px;
+}
+#popupas{
+    background: #fff;
+    width: 50%;
+    height: auto;
+    padding: 15px 0;
+    margin: auto;
+    position: fixed;
+    top: 30% ;
+    left:0;
+    right: 0;
+    -webkit-box-shadow: 0 0 5px 2px #000;
+    -moz-box-shadow: 0 0 5px 2px #000;
+    box-shadow: 0 0 5px 2px #000;
+    display: none;
+}
+.page-header{
+	margin-top: 0;
+	background-color: #008fd5;
+	color: #fff;
+	border-radius: 15px;
+}
+.page-header h1{
+	padding-top: 15px;
+	padding-left: 10px;
+}
+.panel-body{
+	padding-top: 0;
+}
+.krepselis {
+	margin-top: 15px;
+	border-radius: 15px;
+	font-size: 15px;
+	background-color:  #008fd5;
+}
+.dropdown-menu{
+	background-color:  #008fd5;
+}
+.IamHere{
+	background-color:  #dddddd;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dddddd;
+}
+
+ul.nav.navbar-nav li a.tab{
+	color: #fff ;
+}
+ul.nav.navbar-nav li:hover{background-color:  #dddddd;}
+.info-box{
+	text-align: center;
+	padding-top: 15px;
+}
+p.space{
+	visibility:hidden;
+	padding-top: 20px;
+}
+nav ul.nav li{
+	color: #fff;
+	border-left: 12px;
+
+}
+.newsletter{
+	margin-left: 30%;
+	margin-top: 20px;
+}
+
+nav.nav {
+	border-radius: 15px;
+	margin-top: 15px;
+	background-color:  #008fd5;
+}
+div.jumbotron {
+	padding-top: 5px;
+	margin-top: 15px;
+	padding-bottom: 10px;
+}
+i.fa{
+	font-size: 25px;
+	margin-right: 10px;
+}
+button > i.fa{
+	font-size: 20px;
+	margin: 0;
+}
+h6 > i.fa{
+	font-size: 20px;
+	margin-left: 10px;
+}
+.social i.fa{
+	font-size: 55px;
+}
+
+.v-separator
+{
+	border-radius: 10px;
+    border: 1px solid #b4b4b4;
+    padding: 10px;
+}
+
+nav.topNav{
+    border-radius: 0;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+.itemsMenu{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#myCarousel{
+    margin-bottom: 15px;
+}
+h3 strong{
+    color: #660000;
+}
+.answer{
+    display: none;
+}
+#map {
+    width: 550px;
+    height: 500px;
+    background-color: #CCC;
+    margin-top: 20px;
+}
+#tab{color: #fff;}
+#reg-info{
+	color: #000;
+	text-align: center;
+	font-size: 30px;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	background-color: #85e085;
+}
+.anketa-h2{
+	text-align: center;
+	font-weight: 700;
+}
+.prisijungimas{
+	padding-bottom: 32px;
+}
+#turinys{
+	color: #000;
+	font-size: 30px;
+}
+#adminlog,#adminA{
+	color: #000;
+	font-size: 30px;
+	font-weight: 900;
+	text-align: center;
+	padding-top: 50px;
+	text-transform: uppercase;
+	background: #008fd5;
+}
+#adminlog h2{
+	color: #fff;
+	padding-bottom: 2%;
+}
+#adminlog h2 label{
+	color: #000;
+}
+table.usersInfo td{
+	text-align: left;
+	padding-left: 15px;
+}
+#err-info{
+	background: #ff0000;
+	color: #fff;
+}
+.rasyti_ats textarea{
+	padding: 5px;
+	width: 100%;
+	padding-bottom: 15px;
+}
+.rasyti_ats input{
+	float: right;
+}
+.readr table td{
+	padding: 5px;
+	font-size: 20px;
+	border-top: 1px solid #000;
+	vertical-align: top;
+}
+.disnon, #redaguoti{
+	display: none;
+}
+#redaguoti tr:nth-child(2){
+    display: none;
+}
+.rasyti_ats input, .rasyti_ats select, .rasyti_ats textarea,
+#redaguoti input, #redaguoti textarea{
+    width: 60%;
+
+    float: none;
+    margin: 10px auto;
+    font-size: 20px;
+    font-weight: 800;
+    padding-left: 10px;
+    display: block;
+}
+.rasyti_ats input:last-child, #redaguoti input:last-child{
+    width: 120px;
+    background: #008fd5;
+    color: #fff;
+    border: none;
+}
+.hide{display: none;}
