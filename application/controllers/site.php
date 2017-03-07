@@ -37,8 +37,9 @@ class Site extends CI_Controller {
     public function pagrindinis() {
         
         $search = null;
-        $recipesPerPage = 10;
+        $recipesPerPage = 2;
         if (isset($_GET["s"])) {
+            
             $search = filter_input(INPUT_GET,"s",FILTER_SANITIZE_STRING);
         }
         if (isset($_GET["pg"])) {
@@ -84,31 +85,16 @@ class Site extends CI_Controller {
     }
     function full_recipes_array($limit = null, $offset = 0) {
         $this->load->model("recipe_model");
-        if( is_integer($limit)){
-            return $this->recipe_model->get_recipes($limit, $offset);
-        }
-        else{
-             return $this->recipe_model->get_recipes();
-        }
+        return $this->recipe_model->get_recipes($limit, $offset);
     }
 
-    function search_recipes_array($search, $limit = null, $offset = 0) {
+    function search_recipes_array($search = null, $limit = null, $offset = 0) {
         $this->load->model("recipe_model");
-        if( is_integer($limit)){
-            return $this->recipe_model->search_recipes($search, $limit, $offset);
-        }
-        else{
-             return $this->recipe_model->search_recipes();
-        }
+        return $this->recipe_model->search_recipes($search, $limit, $offset);
     }
 
     function get_recipes_count($search = null) {
         $this->load->model("recipe_model");
-        if(!empty($search)){
-            return $this->recipe_model->count_recipes($search);
-        }
-        else{
-            return $this->recipe_model->count_recipes();
-        }
+        return $this->recipe_model->count_recipes($search);
     }
 } 

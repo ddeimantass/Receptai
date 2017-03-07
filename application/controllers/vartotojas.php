@@ -3,19 +3,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vartotojas extends CI_Controller {
     
-     public function administratorius() {
+    public function administratorius() {
         $this->load->view("adminas");
     }
     public function adminasAnketa() {
+        $this->load->model("recipe_model");
+      
+        $recipesPerPage = 2;
+        $usersPerPage = 2;
         
-        $data=array();
-        if($query=$this->CRUD_model->get_records()){
-
-            $data['records']=$query;
+        if (isset($_GET["u"])) {
+            $current_users_page = filter_input(INPUT_GET,"u",FILTER_SANITIZE_NUMBER_INT);
         }
-        if($query=$this->CRUD_model->get_reviews()){
+        if (isset($_GET["r"])) {
+            $current_recipes_page = filter_input(INPUT_GET,"r",FILTER_SANITIZE_NUMBER_INT);
+        }
+        if (empty($current_users_page)) {
+            $current_users_page = 1;
+        }
+        if (empty($current_recipes_page)) {
+            $current_recipes_page = 1;
+        }
 
-            $data['recipe']=$query;
+        $total_users = $this->CRUD_model->count_records();
+        $total_recipes = $this->recipe_model->count_recipes_admin();;
+        
+        $total_users_pages = ceil($total_users / $usersPerPage);
+        $total_recipes_pages = ceil($total_recipes / $recipesPerPage);
+        
+        if ($current_users_page > $total_users_pages && $current_recipes_page > $total_recipes_pages) {
+            header("location:?u=".$total_users_pages."&r=".$total_recipes_pages);
+        }
+        if ($current_users_page < 1 && $current_recipes_page < 1) {
+            header("location:?u=1&r=1");
+        }
+        if ($current_recipes_page > $total_recipes_pages && $current_users_page < 1) {
+            header("location:?u=1&r=".$total_recipes_pages);
+        }
+        if ($current_recipes_page < 1 && $current_users_page > $total_users_pages) {
+            header("location:?r=1&u=".$total_users_pages);
+        }
+        
+        $usersOffset = ($current_users_page - 1) * $usersPerPage;
+        $recipesOffset = ($current_recipes_page - 1) * $recipesPerPage;
+        
+        $users = $this->CRUD_model->get_records($usersPerPage, $usersOffset);
+        $recipes = $this->recipe_model->get_recipes_admin($recipesPerPage, $recipesOffset);
+        $users = json_decode(json_encode($users), True);
+        $recipes = json_decode(json_encode($recipes), True);
+        
+        $data = array(
+            'users' => $users,
+            'recipes' => $recipes,
+            'total_users' => $total_users,
+            'total_recipes' => $total_recipes,
+            'total_users_pages' => $total_users_pages,
+            'total_recipes_pages' => $total_recipes_pages,
+            'current_users_page' => $current_users_page,            
+            'current_recipes_page' => $current_recipes_page,            
+        );
+        
+        if($query=$this->CRUD_model->get_records(1, 0)){
+        }
+        if($query=$this->recipe_model->get_recipes_admin(1, 0)){
         }
         if (isset($aderr)){
             $data['aderr']=$query;
@@ -175,4 +225,5 @@ class Vartotojas extends CI_Controller {
         }
 
     }
+    
 }

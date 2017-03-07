@@ -2,11 +2,16 @@
 
 class CRUD_model extends CI_Model {
 
-	public function get_records() {
-
+	public function get_records($limit, $offset) {
+        $this->db->limit($limit);
+        $this->db->offset($offset);
 		$query = $this->db->get("users");
 		return $query->result();
-
+	}
+    public function count_records() {
+        $this->db->order_by("id","desc");
+		$query = $this->db->get("users");
+		return count($query->result());
 	}
 	public function add_record($data) {
 

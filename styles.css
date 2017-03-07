@@ -221,7 +221,6 @@ table.usersInfo td{
 .rasyti_ats input, .rasyti_ats select, .rasyti_ats textarea,
 #redaguoti input, #redaguoti textarea{
     width: 60%;
-
     float: none;
     margin: 10px auto;
     font-size: 20px;
@@ -229,10 +228,34 @@ table.usersInfo td{
     padding-left: 10px;
     display: block;
 }
-.rasyti_ats input:last-child, #redaguoti input:last-child{
+.rasyti_ats input:last-child, #redaguoti input:last-child, #search_btn{
     width: 120px;
     background: #008fd5;
     color: #fff;
     border: none;
 }
+#search_btn:hover{
+    background: #dddddd;
+}
 .hide{display: none;}
+.pagination, .search, #list h3{
+    margin: 0 0 15px 0;
+}
+.panel-body{
+    margin: 10px 0;
+}
+#list h1, #detaliai h1{padding: 0;}
+#detaliai p{margin: 0;}
+#detaliai p.laikas{text-align: right;}
+#list ul li a, #list ul li a:hover{
+    font-size: 16px;
+    text-decoration: none;
+    color: #000;
+}
+#list ul li a:hover{
+    color: #008fd5;
+}
+#list ul{
+    padding: 0;
+}
+#anketa, #atsiliepimas{display: none;}

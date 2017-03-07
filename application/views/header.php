@@ -26,9 +26,9 @@
 						
 						<li id='login' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/site/prisijungimas'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/site/prisijungimas"><i class="fa fa-sign-in"></i>Prisijungti</a></li>
 						
-                        <li id='anketa' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/vartotojas/anketa'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/vartotojas/anketa"><i class="fa fa-user"></i>Anketa</a></li>
+                        <li <?php if($this->session->userdata('is_logged_in')) echo "style='display: block'"?> id='anketa' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/vartotojas/anketa'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/vartotojas/anketa"><i class="fa fa-user"></i>Anketa</a></li>
                         
-						<li id='atsiliepimas' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/vartotojas/pasiulytiRecepta'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/vartotojas/pasiulytiRecepta"><i class="fa fa-pencil"></i>Pasiūlyti receptą</a></li>
+						<li <?php if($this->session->userdata('is_logged_in')) echo "style='display: block'"?> id='atsiliepimas' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/vartotojas/pasiulytiRecepta'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/vartotojas/pasiulytiRecepta"><i class="fa fa-pencil"></i>Pasiūlyti receptą</a></li>
 					</ul>
 				</div>
             </div>

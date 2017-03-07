@@ -1,4 +1,31 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); echo doctype('html5');?>
+<?php 
+    defined('BASEPATH') OR exit('No direct script access allowed'); echo doctype('html5');
+
+    $users_pagination = "<div class=\"pagination\">";
+    $users_pagination .= "Puslapiai: ";
+    for ($i = 1;$i <= $total_users_pages;$i++) {
+      if ($i == $current_users_page) {
+          $users_pagination .= " <span>$i</span>";
+      } else {
+          $users_pagination .= " <a href='".base_url()."index.php/vartotojas/adminasAnketa?";
+          $users_pagination .= "u=$i&r=$current_recipes_page'>$i</a>";
+      }
+    }
+    $users_pagination .= "</div>";
+
+    $recipes_pagination = "<div class=\"pagination\">";
+    $recipes_pagination .= "Puslapiai: ";
+    for ($i = 1;$i <= $total_recipes_pages;$i++) {
+      if ($i == $current_recipes_page) {
+          $recipes_pagination .= " <span>$i</span>";
+      } else {
+          $recipes_pagination .= " <a href='".base_url()."index.php/vartotojas/adminasAnketa?";
+          $recipes_pagination .= "r=$i&u=$current_users_page'>$i</a>";
+      }
+    }
+    $recipes_pagination .= "</div>";
+
+?>
 <html>
 <head>
     <title>Receptų administratorius</title>
@@ -26,10 +53,11 @@
                     <h1>Naudotojai</h1>
                 </div>
                 <div class='read'>
+                    <?php echo $users_pagination; ?>
                     <table class='usersInfo' align="center">
-                        <?php if(isset($records)){
-                            foreach ($records as $row) {
-                                echo "<tr><td>".$row->id.".</td><td class='title' > ".$row->email."</td><td><button id='".base_url()."index.php/CRUD/delete/".$row->id."' class='btn btn-danger r'>X</button></td></tr>";
+                        <?php if(isset($users)){
+                            foreach ($users as $user) {
+                                echo "<tr><td>".$user["id"].".</td><td class='title' > ".$user["email"]."</td><td><button id='".base_url()."index.php/CRUD/delete/".$user["id"]."' class='btn btn-danger r'>X</button></td></tr>";
                                 }
                             }
                             else{
@@ -48,15 +76,19 @@
                 <div class='readr'>
                     <div id='err-info'><?php if (isset($aderr)) echo $aderr;?></div>
                     <div id='reg-info'><?php if (isset($reg)) echo $reg;?></div>
+                    <?php echo $recipes_pagination; ?>
                     <table class='usersInfo' align='center' >
-                        <?php if(isset($recipe)){
-                            foreach ($recipe as $row) {
-                                echo "<tr id='".$row->id."'>
-                                <td>".$row->id.".</td>
-                                <td class='title' > ".$row->title."</td>
-                                <td class='hide'><textarea class='hide'>".$row->description."</textarea></td>
-                                <td><button class='btn btn-success' onclick='btnEdit(\"".$row->id."\",\"".$row->title."\",\"".$row->user."\",\"".$row->type."\")'>Peržiūrėti</button></td>
-                                <td><button id='".base_url()."/index.php/CRUD/deleteReview/".$row->id."' class='btn btn-danger r'>X</button></td>
+                        <?php if(isset($recipes)){
+                            foreach ($recipes as $recipe) {
+                                if($recipe["publish"] != 1)
+                                    echo "<tr id='".$recipe["id"]."' style='background: #008fd5; color: #fff'>";
+                                else
+                                    echo "<tr id='".$recipe["id"]."'>";
+                                echo "<td>".$recipe["id"].".</td>
+                                <td class='title' > ".$recipe["title"]."</td>
+                                <td class='hide'><textarea class='hide'>".$recipe["description"]."</textarea></td>
+                                <td><button class='btn btn-success' onclick='btnEdit(\"".$recipe["id"]."\",\"".$recipe["title"]."\",\"".$recipe["user"]."\",\"".$recipe["type"]."\")'>Peržiūrėti</button></td>
+                                <td><button id='".base_url()."/index.php/CRUD/deleteReview/".$recipe["id"]."' class='btn btn-danger r'>X</button></td>
                                 </tr>";
                                 }
                             }
