@@ -258,4 +258,32 @@ table.usersInfo td{
 #list ul{
     padding: 0;
 }
+#bottomForm{
+    margin-top: 10px;
+    float: right;
+}
 #anketa, #atsiliepimas{display: none;}
+
+.prisijungimas form h5:nth-child(4){
+    display: inline-block;
+}
+#remember{
+    margin-left: 10px;
+    border: 0;
+    background: #008fd5;
+    color: white;
+    cursor: pointer;
+}
+#rememberForm{
+    text-align: center;
+    display: none;
+}
+table tr td{
+    padding: 5px 0;
+}
+input[name=signup_submit], input[name=login_submit], input[name=remember_submit]{
+    border: 0;
+    background: #008fd5;
+    color: white;
+    cursor: pointer;
+}

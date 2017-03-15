@@ -13,7 +13,6 @@
       }
   }
   $pagination .= "</div>";
-
 ?>
 
 <article class="container" id="list">
@@ -24,15 +23,28 @@
             </div>
             <div class="search col-xs-6 pull-right">
               <form class="pull-right" method="get" action="">
-                <input type="text" placeholder="Paieška" name="s" id="s" />
-                <input id="search_btn" type="submit" value="Ieškoti" />
+                  <div id="topForm" >
+                      <input type="text" placeholder="Paieška" value="<?php echo htmlspecialchars($search); ?>" name="s" id="s" />
+                      <input id="search_btn" type="submit" value="Ieškoti" />
+                  </div>
+                  <div id="bottomForm" >
+                      <select name="sort" >
+                          <option value="new" <?php echo $sort == "new" ? 'selected="selected"': ''; ?> >Naujausi</option>
+                          <option value="a_z" <?php echo $sort == "a_z" ? 'selected="selected"': ''; ?> >pavadinimas A-Ž</option>
+                          <option value="z_a" <?php echo $sort == "z_a" ? 'selected="selected"': ''; ?> >pavadinimas Ž-A</option>
+                      </select>
+                      <input id="search_btn" type="submit" value="Rikiuoti" />
+                  </div>
+                
               </form>
+                
             </div>
             <div class="col-xs-6" >
                 <?php
                     if ($search != null){
                         echo "<h3>Paieškos rezultatai atitinkantys: \"".htmlspecialchars($search)."\"</h3>";
                     }
+                
                 ?>
                 <?php
                   if ($total_items < 1) {

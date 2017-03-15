@@ -70,6 +70,7 @@ class CRUD extends CI_Controller {
             $this->load->view("footer");
         }
     }
+    
     public function deleteReview() {
         $this->CRUD_model->delete_review();
         redirect('index.php/vartotojas/adminasAnketa');

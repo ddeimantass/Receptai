@@ -15,6 +15,19 @@ class Model_users extends CI_Model {
 		else {return false;}
 
 	}
+    
+    public function email_exists($email){
+
+		$this->db->where('email',$email);
+        $query = $this->db->get('users');
+        if ($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+	}
 	public function can_log_in() {
 
 		$this->db->where('email',$this->input->post('email'));

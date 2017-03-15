@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
 	<header>
 		<nav class=" nav navbar-inverse topNav " >
 			<div class="container">	
@@ -24,7 +23,7 @@
 					<ul class="nav navbar-nav">
                         <li class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>"><i class="fa fa-home"></i>Pradinis</a></li>
 						
-						<li id='login' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/site/prisijungimas'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/site/prisijungimas"><i class="fa fa-sign-in"></i>Prisijungti</a></li>
+						<li <?php if($this->session->userdata('is_logged_in')) echo "style='display: none'"?> id='login' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/site/prisijungimas'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/site/prisijungimas"><i class="fa fa-sign-in"></i>Prisijungti</a></li>
 						
                         <li <?php if($this->session->userdata('is_logged_in')) echo "style='display: block'"?> id='anketa' class="<?php if(base_url(uri_string())=='http://localhost:8888/receptai/vartotojas/anketa'){echo "IamHere ";}?> " ><a id ='tab' href="<?php echo base_url();?>index.php/vartotojas/anketa"><i class="fa fa-user"></i>Anketa</a></li>
                         

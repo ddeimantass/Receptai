@@ -91,3 +91,6 @@ function btnEdit(id,review){
     $('#reviewText').val(review);
     $('#rewid').val(id);
 }
+$("#remember").on("click", function(){
+    $("#rememberForm").toggle();
+});
