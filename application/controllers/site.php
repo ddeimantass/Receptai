@@ -17,31 +17,42 @@ class Site extends CI_Controller {
         $this->form_validation->set_message("valid_email", 'Neteisingai įvedėte el. pašto adresą slaptažodžio priminimui');
         
         if($this->form_validation->run()){
-        
-            $this->load->library('email');
 
-            $this->email->from('ddeimantass@gmail.com', 'Deimantas');
-            $this->email->to($this->input->post('email'));
+			$config = Array(
+			    'protocol' => 'smtp',
+			    'smtp_host' => 'smtp.gmail.com',
+			    'smtp_port' => 587,
+			    'smtp_user' => 'ddeimantass@gmail.com',
+			    'smtp_pass' => '',
+			    'mailtype'  => 'html', 
+			    'charset'   => 'iso-8859-1',
+			    'smtp_crypto' => 'tls'
+			);
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
 
-            $this->email->subject('Email test');
-            
-            $passwd = $this->generate_password_suggestion();
-            $senas = $this->input->post('email');
-            $naujas = array('password' => md5($passwd));
-            $this->CRUD_model->update_record($senas,$naujas);
-            
-            $this->email->message('Jūsų naujas slaptažodis: '. $passwd );
+	        $this->email->from('ddeimantass@gmail.com', 'Deimantas');
+	        $this->email->to($this->input->post('email'));
 
-            $data['reg']= "Faild";
-            
-            if($this->email->send())
-                $data['reg']= "Naujas slaptažodis išsiūstas į jūsų el. paštą";
-            
-            //echo $this->email->print_debugger();
-            
-            $this->load->view("header");
-            $this->load->view("login", $data);
-            $this->load->view("footer");
+	        $this->email->subject('Email test');
+	        
+	        $passwd = $this->generate_password_suggestion();
+	        $senas = $this->input->post('email');
+	        $naujas = array('password' => md5($passwd));
+	        $this->CRUD_model->update_record($senas,$naujas);
+	        
+	        $this->email->message('Jūsų naujas slaptažodis: '. $passwd );
+
+	        $data['reg']= "Norėdami išsiūsti laišką įrašykite savo SMTP Pašto duomenis site.php faile";
+	        
+	        if($this->email->send())
+	            $data['reg']= "Naujas slaptažodis išsiūstas į jūsų el. paštą";
+	        
+	        //echo $this->email->print_debugger();
+	        
+	        $this->load->view("header");
+	        $this->load->view("login", $data);
+	        $this->load->view("footer");
         }
         else{
             $data['remerr']= validation_errors();

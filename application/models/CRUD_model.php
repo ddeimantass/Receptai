@@ -2,7 +2,7 @@
 
 class CRUD_model extends CI_Model {
 
-	public function get_records($limit, $offset) {
+	public function get_records($limit = 0, $offset = 0) {
         $this->db->limit($limit);
         $this->db->offset($offset);
 		$query = $this->db->get("users");
@@ -40,7 +40,7 @@ class CRUD_model extends CI_Model {
 		return;
 	}
 	public function update_review($senas,$naujas) {
-
+		
 		$this->db->where("id",$senas);
 		$this->db->update("recipe", $naujas);
 	}

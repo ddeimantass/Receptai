@@ -77,7 +77,6 @@ class CRUD extends CI_Controller {
     }
 
     public function updateReview() {
-        
         $this->load->library('form_validation');
         $this->form_validation->set_rules('title','Recepto pavadinimo','required|trim|xss_clean|max_length[100]');
         $this->form_validation->set_rules('user','El.pašto','required|trim|xss_clean|max_length[100]');
@@ -89,15 +88,17 @@ class CRUD extends CI_Controller {
         $this->form_validation->set_message('required', '%s laukelis yra privalomas');
         $this->form_validation->set_message('max_length', '%s maximalus simbolių skaičius yra %s');
 
+        
         if($this->form_validation->run()){
             $id = $this->input->post('id');
+            
             $data = array(
                 'title' => $this->input->post('title'),
                 'type' => $this->input->post('type'),
                 'description' => $this->input->post('description'),
                 'publish' => 1,
                 'user' => $this->input->post('user'),
-                'admin' => $this->input->post('admin'),
+                'admin' => "admin",
             );
             $this->CRUD_model->update_review($id,$data);
             $data['reg']= "Receptas išsaugotas ir viešinamas";
@@ -111,7 +112,7 @@ class CRUD extends CI_Controller {
         if($query=$this->CRUD_model->get_reviews()){
             $data['recipe']=$query;
         }
-        $this->load->view("adminasAnketa",$data);
+        redirect('index.php/vartotojas/adminasAnketa', 'refresh');
         
     }
 } 
